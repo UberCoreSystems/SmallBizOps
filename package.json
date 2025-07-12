@@ -1,0 +1,38 @@
+{
+  "name": "smallbizops",
+  "version": "1.0.0",
+  "description": "Small Biz Ops - AI-Powered Business Management for Small Entrepreneurs A mobile-first, bilingual inventory and financial management app designed specifically for underserved small business owners including handymen, food trucks, corner stores, and tradespeople.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "echo \"No linting configured yet\"",
+    "test": "echo \"No tests configured yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UberCoreSystems/SmallBizOps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/UberCoreSystems/SmallBizOps/issues"
+  },
+  "homepage": "https://github.com/UberCoreSystems/SmallBizOps#readme",
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.6.0",
+    "clsx": "^2.1.1",
+    "firebase": "^11.10.0",
+    "lucide-react": "^0.525.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "vite": "^7.0.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
+  }
+}
