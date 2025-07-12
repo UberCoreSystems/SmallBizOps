@@ -1,0 +1,122 @@
+// Small Biz Ops - Replit-Ready Boilerplate
+
+// Project Stack:
+// - Frontend: React Native (Expo)
+// - Backend: Firebase (Firestore + Auth)
+// - Language: JavaScript (with optional TypeScript conversion)
+// - AI/Voice: Placeholder for OpenAI + Speech-to-Text integration
+
+// === STEP 1: App Entry Point ===
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import HomeScreen from './screens/HomeScreen';
+import InventoryScreen from './screens/InventoryScreen';
+import FinanceScreen from './screens/FinanceScreen';
+import SettingsScreen from './screens/SettingsScreen';
+import LoginScreen from './screens/LoginScreen';
+
+const Stack = createNativeStackNavigator();
+
+export default function App() {
+  return (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Login">
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Inventory" component={InventoryScreen} />
+          <Stack.Screen name="Finance" component={FinanceScreen} />
+          <Stack.Screen name="Settings" component={SettingsScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+}
+
+// === STEP 2: Firebase Setup ===
+// File: firebaseConfig.js
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getAuth } from 'firebase/auth';
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+export { db, auth };
+
+// === STEP 3: Screens (Skeletons) ===
+// Folder: screens/
+// Each screen below is minimal and can be expanded with UI and logic later
+
+// HomeScreen.js
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+export default function HomeScreen({ navigation }) {
+  return (
+    <View>
+      <Text>Welcome to Small Biz Ops</Text>
+      <Button title="Inventory" onPress={() => navigation.navigate('Inventory')} />
+      <Button title="Finance" onPress={() => navigation.navigate('Finance')} />
+    </View>
+  );
+}
+
+// InventoryScreen.js
+import React from 'react';
+import { View, Text } from 'react-native';
+export default function InventoryScreen() {
+  return (
+    <View>
+      <Text>Inventory Tracking</Text>
+    </View>
+  );
+}
+
+// FinanceScreen.js
+import React from 'react';
+import { View, Text } from 'react-native';
+export default function FinanceScreen() {
+  return (
+    <View>
+      <Text>Finance Dashboard</Text>
+    </View>
+  );
+}
+
+// SettingsScreen.js
+import React from 'react';
+import { View, Text } from 'react-native';
+export default function SettingsScreen() {
+  return (
+    <View>
+      <Text>App Settings</Text>
+    </View>
+  );
+}
+
+// LoginScreen.js
+import React from 'react';
+import { View, Text } from 'react-native';
+export default function LoginScreen() {
+  return (
+    <View>
+      <Text>Login / Register</Text>
+    </View>
+  );
+}
+
+// === STEP 4: Install Required Dependencies ===
+// In Replit shell or package.json, make sure to install:
+// expo, react-native, react-navigation, firebase, react-native-safe-area-context

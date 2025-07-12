@@ -1,0 +1,336 @@
+.ai-business-manager {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  color: white;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.ai-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ai-avatar {
+  font-size: 2.5rem;
+  background: rgba(255,255,255,0.2);
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+
+.ai-info h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.ai-info p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.refresh-analysis {
+  margin-left: auto;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+}
+
+.refresh-analysis:hover:not(:disabled) {
+  background: rgba(255,255,255,0.3);
+  transform: scale(1.05);
+}
+
+.refresh-analysis:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.analyzing {
+  text-align: center;
+  padding: 2rem;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255,255,255,0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.business-insights {
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.business-insights h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.8rem;
+}
+
+.insight-card {
+  background: rgba(255,255,255,0.1);
+  padding: 0.8rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 80px;
+  justify-content: center;
+}
+
+.insight-label {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 0.3rem;
+}
+
+.insight-value {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.insight-value.excellent { color: #2ecc71; }
+.insight-value.good { color: #f1c40f; }
+.insight-value.concerning,
+.insight-value.needs_improvement,
+.insight-value.high,
+.insight-value.negative { color: #e74c3c; }
+.insight-value.medium { color: #f39c12; }
+.insight-value.low,
+.insight-value.positive { color: #2ecc71; }
+
+.recommendations {
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.recommendations h4 {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+}
+
+.recommendation-card {
+  background: rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid rgba(255,255,255,0.3);
+}
+
+.rec-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.rec-icon {
+  font-size: 1.5rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.rec-title-area {
+  flex: 1;
+  min-width: 0;
+}
+
+.rec-title-area h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  word-wrap: break-word;
+}
+
+.rec-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.priority-badge, 
+.impact-badge, 
+.roi-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.priority-badge {
+  background: #e74c3c;
+}
+
+.impact-badge {
+  background: #f39c12;
+}
+
+.roi-badge {
+  background: #2ecc71;
+}
+
+.rec-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.rec-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.action-tag {
+  background: rgba(255,255,255,0.2);
+  padding: 0.3rem 0.8rem;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255,255,255,0.3);
+  white-space: nowrap;
+}
+
+.rec-buttons {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.implement-btn {
+  background: #2ecc71;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 100px;
+}
+
+.implement-btn:hover:not(:disabled) {
+  background: #27ae60;
+  transform: translateY(-1px);
+}
+
+.implement-btn.implemented,
+.implement-btn:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.recommendation-card.implemented {
+  opacity: 0.8;
+  border-left-color: #27ae60;
+}
+
+.details-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 100px;
+}
+
+.details-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+@media (max-width: 768px) {
+  .insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .rec-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .rec-meta {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .rec-buttons {
+    flex-direction: column;
+  }
+
+  .implement-btn, 
+  .details-btn {
+    width: 100%;
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .insights-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .ai-business-manager {
+    padding: 1rem;
+  }
+
+  .ai-header {
+    gap: 0.5rem;
+  }
+
+  .ai-avatar {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .rec-actions {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .action-tag {
+    text-align: center;
+  }
+}
