@@ -62,10 +62,10 @@ export const AIBusinessManager = ({ inventory, rawMaterials, transactions }) => 
         id: 1,
         type: 'reorder',
         priority: 'high',
-        title: language === 'en' ? 'Urgent Stock Reorder Required' : 'Reorden Urgente de Stock Requerida',
+        title: language === 'en' ? 'Urgent Food Supply Reorder Required' : 'Reorden Urgente de Suministros Alimentarios Requerida',
         description: language === 'en' 
-          ? `${analysis.criticalStockItems.length} items are critically low. Immediate reordering recommended to avoid stockouts.`
-          : `${analysis.criticalStockItems.length} artículos están críticamente bajos. Se recomienda reordenar inmediatamente para evitar falta de stock.`,
+          ? `${analysis.criticalStockItems.length} ingredients/supplies are critically low. Immediate reordering recommended to avoid menu shortages.`
+          : `${analysis.criticalStockItems.length} ingredientes/suministros están críticamente bajos. Se recomienda reordenar inmediatamente para evitar falta de menú.`,
         impact: 'high',
         roi: '15-25%',
         icon: AlertCircle,
@@ -79,10 +79,10 @@ export const AIBusinessManager = ({ inventory, rawMaterials, transactions }) => 
         id: 2,
         type: 'financial',
         priority: 'medium',
-        title: language === 'en' ? 'Improve Profit Margins' : 'Mejorar Márgenes de Ganancia',
+        title: language === 'en' ? 'Optimize Food Truck Profit Margins' : 'Optimizar Márgenes de Ganancia del Food Truck',
         description: language === 'en'
-          ? 'Current profit margin is below industry average. Consider cost optimization or pricing adjustments.'
-          : 'El margen de ganancia actual está por debajo del promedio de la industria. Considera optimización de costos o ajustes de precios.',
+          ? 'Current profit margin is below food truck industry average. Consider ingredient cost optimization or menu pricing adjustments.'
+          : 'El margen de ganancia actual está por debajo del promedio de la industria de food trucks. Considera optimización de costos de ingredientes o ajustes de precios del menú.',
         impact: 'medium',
         roi: '10-20%',
         icon: TrendingUp,
@@ -96,10 +96,10 @@ export const AIBusinessManager = ({ inventory, rawMaterials, transactions }) => 
         id: 3,
         type: 'inventory',
         priority: 'medium',
-        title: language === 'en' ? 'Optimize Inventory Turnover' : 'Optimizar Rotación de Inventario',
+        title: language === 'en' ? 'Improve Menu Item Turnover' : 'Mejorar Rotación de Artículos del Menú',
         description: language === 'en'
-          ? 'Inventory is moving slowly. Consider marketing strategies or seasonal adjustments to improve turnover.'
-          : 'El inventario se mueve lentamente. Considera estrategias de marketing o ajustes estacionales para mejorar la rotación.',
+          ? 'Some menu items are moving slowly. Consider promoting popular dishes, adjusting portion sizes, or updating the menu for seasonal appeal.'
+          : 'Algunos artículos del menú se mueven lentamente. Considera promover platos populares, ajustar tamaños de porciones, o actualizar el menú para atractivo estacional.',
         impact: 'medium',
         roi: '8-15%',
         icon: Clock,

@@ -14,117 +14,137 @@ import {
 import { Download, Calendar, TrendingUp, TrendingDown, DollarSign } from 'lucide-react';
 import { Button } from './ui/Button';
 import { Card } from './ui/Card';
-import { mockTransactions } from '../data/mockData';
 
-const CashFlowDashboard = () => {
+// Mock data for demonstration
+const mockTransactions = [
+  { id: 1, date: '2025-07-25', amount: 1200, type: 'income', description: 'Lunch Rush Sales' },
+  { id: 2, date: '2025-07-25', amount: -300, type: 'expense', description: 'Halal Meat Purchase' },
+  { id: 3, date: '2025-07-26', amount: 800, type: 'income', description: 'Dinner Service Revenue' },
+  { id: 4, date: '2025-07-26', amount: -150, type: 'expense', description: 'Fuel & Gas' },
+  { id: 5, date: '2025-07-27', amount: 2000, type: 'income', description: 'Catering Order' },
+  { id: 6, date: '2025-07-27', amount: -500, type: 'expense', description: 'Food Supplies Restocking' },
+  { id: 7, date: '2025-07-28', amount: 600, type: 'income', description: 'Street Food Sales' },
+  { id: 8, date: '2025-07-28', amount: -200, type: 'expense', description: 'Truck Permit Fees' },
+  { id: 9, date: '2025-07-29', amount: 1500, type: 'income', description: 'Festival Sales' },
+  { id: 10, date: '2025-07-29', amount: -400, type: 'expense', description: 'Staff Payment' },
+  { id: 11, date: '2025-07-30', amount: 900, type: 'income', description: 'Office Catering' },
+  { id: 12, date: '2025-07-30', amount: -250, type: 'expense', description: 'Equipment Maintenance' },
+  { id: 13, date: '2025-07-31', amount: 1100, type: 'income', description: 'Evening Rush Sales' },
+  { id: 14, date: '2025-07-31', amount: -180, type: 'expense', description: 'Insurance Payment' },
+  { id: 15, date: '2025-08-01', amount: 750, type: 'income', description: 'Lunch Specials' },
+  { id: 16, date: '2025-08-01', amount: -350, type: 'expense', description: 'Kitchen Equipment' },
+  { id: 17, date: '2025-08-02', amount: 1300, type: 'income', description: 'Combo Platter Sales' },
+  { id: 18, date: '2025-08-02', amount: -120, type: 'expense', description: 'Cleaning Supplies' }
+];
+
+// Utility functions embedded in component
+const getDateRange = (days) => {
+  const endDate = new Date();
+  const startDate = new Date();
+  startDate.setDate(endDate.getDate() - days);
+  return { startDate, endDate };
+};
+
+const fetchTransactions = async (startDate, endDate) => {
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 500));
+  
+  return mockTransactions.filter(transaction => {
+    const transactionDate = new Date(transaction.date);
+    return transactionDate >= startDate && transactionDate <= endDate;
+  });
+};
+
+const groupTransactionsByPeriod = (transactions, period) => {
+  const grouped = {};
+  
+  transactions.forEach(transaction => {
+    const date = new Date(transaction.date);
+    let key;
+    
+    switch (period) {
+      case 'day':
+        key = date.toISOString().split('T')[0];
+        break;
+      case 'week':
+        const weekStart = new Date(date);
+        weekStart.setDate(date.getDate() - date.getDay());
+        key = weekStart.toISOString().split('T')[0];
+        break;
+      case 'month':
+        key = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
+        break;
+      default:
+        key = date.toISOString().split('T')[0];
+    }
+    
+    if (!grouped[key]) {
+      grouped[key] = {
+        date: key,
+        income: 0,
+        expenses: 0,
+        transactions: []
+      };
+    }
+    
+    if (transaction.amount > 0) {
+      grouped[key].income += transaction.amount;
+    } else {
+      grouped[key].expenses += Math.abs(transaction.amount);
+    }
+    
+    grouped[key].transactions.push(transaction);
+  });
+  
+  return Object.values(grouped)
+    .map(group => ({
+      ...group,
+      netProfit: group.income - group.expenses,
+      formattedDate: formatDateForDisplay(group.date, period)
+    }))
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+};
+
+const calculateSummary = (data) => {
+  const totals = data.reduce(
+    (acc, item) => ({
+      totalIncome: acc.totalIncome + item.income,
+      totalExpenses: acc.totalExpenses + item.expenses,
+      totalNetProfit: acc.totalNetProfit + item.netProfit
+    }),
+    { totalIncome: 0, totalExpenses: 0, totalNetProfit: 0 }
+  );
+  
+  return {
+    ...totals,
+    profitMargin: totals.totalIncome > 0 ? (totals.totalNetProfit / totals.totalIncome) * 100 : 0
+  };
+};
+
+const formatDateForDisplay = (dateString, period) => {
+  const date = new Date(dateString);
+  
+  switch (period) {
+    case 'day':
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    case 'week':
+      const weekEnd = new Date(date);
+      weekEnd.setDate(date.getDate() + 6);
+      return `${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${weekEnd.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`;
+    case 'month':
+      return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+    default:
+      return dateString;
+  }
+};
+
+const CashFlowRadar = () => {
   const [data, setData] = useState([]);
   const [summary, setSummary] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [period, setPeriod] = useState('day');
   const [dateRange, setDateRange] = useState(7);
-
-  // Utility functions embedded in component
-  const getDateRange = (days = 7) => {
-    const endDate = new Date();
-    const startDate = new Date();
-    startDate.setDate(startDate.getDate() - days);
-    startDate.setHours(0, 0, 0, 0);
-    endDate.setHours(23, 59, 59, 999);
-    return { startDate, endDate };
-  };
-
-  const fetchTransactions = async (startDate, endDate) => {
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    const filteredTransactions = mockTransactions.filter(transaction => {
-      const transactionDate = new Date(transaction.timestamp);
-      return transactionDate >= startDate && transactionDate <= endDate;
-    });
-    
-    return filteredTransactions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-  };
-
-  const formatDate = (date, period) => {
-    const d = new Date(date);
-    switch (period) {
-      case 'week':
-        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      case 'month':
-        return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-      case 'day':
-      default:
-        return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    }
-  };
-
-  const groupTransactionsByPeriod = (transactions, period = 'day') => {
-    const groups = {};
-    
-    transactions.forEach(transaction => {
-      const date = new Date(transaction.timestamp);
-      let groupKey;
-      
-      switch (period) {
-        case 'week':
-          const weekStart = new Date(date);
-          weekStart.setDate(date.getDate() - date.getDay());
-          groupKey = weekStart.toISOString().split('T')[0];
-          break;
-        case 'month':
-          groupKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-01`;
-          break;
-        case 'day':
-        default:
-          groupKey = date.toISOString().split('T')[0];
-          break;
-      }
-      
-      if (!groups[groupKey]) {
-        groups[groupKey] = {
-          date: groupKey,
-          income: 0,
-          expenses: 0,
-          transactions: []
-        };
-      }
-      
-      if (transaction.type === 'sale') {
-        groups[groupKey].income += transaction.amount;
-      } else if (transaction.type === 'expense') {
-        groups[groupKey].expenses += transaction.amount;
-      }
-      
-      groups[groupKey].transactions.push(transaction);
-    });
-    
-    return Object.values(groups)
-      .map(group => ({
-        ...group,
-        netProfit: group.income - group.expenses,
-        formattedDate: formatDate(group.date, period)
-      }))
-      .sort((a, b) => new Date(a.date) - new Date(b.date));
-  };
-
-  const calculateSummary = (groupedData) => {
-    const totals = groupedData.reduce(
-      (acc, group) => ({
-        totalIncome: acc.totalIncome + group.income,
-        totalExpenses: acc.totalExpenses + group.expenses,
-        totalNetProfit: acc.totalNetProfit + group.netProfit
-      }),
-      { totalIncome: 0, totalExpenses: 0, totalNetProfit: 0 }
-    );
-    
-    return {
-      ...totals,
-      averageDailyIncome: totals.totalIncome / (groupedData.length || 1),
-      averageDailyExpenses: totals.totalExpenses / (groupedData.length || 1),
-      averageDailyProfit: totals.totalNetProfit / (groupedData.length || 1),
-      profitMargin: totals.totalIncome > 0 ? (totals.totalNetProfit / totals.totalIncome) * 100 : 0
-    };
-  };
 
   // Fetch and process data
   useEffect(() => {
@@ -250,7 +270,7 @@ const CashFlowDashboard = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h2 className="text-2xl font-bold text-gray-900">Cash Flow Radar</h2>
-          <p className="text-gray-600">Track your income and expenses over time</p>
+          <p className="text-gray-600">Track your halal food truck income and expenses over time</p>
         </div>
         
         <div className="flex flex-wrap gap-2">
@@ -387,4 +407,4 @@ const CashFlowDashboard = () => {
   );
 };
 
-export default CashFlowDashboard;
+export default CashFlowRadar;

@@ -1,7 +1,7 @@
 {
   "name": "smallbizops",
   "version": "1.0.0",
-  "description": "Small Biz Ops - AI-Powered Business Management for Small Entrepreneurs A mobile-first, bilingual inventory and financial management app designed specifically for underserved small business owners including handymen, food trucks, corner stores, and tradespeople.",
+  "description": "Small Biz Ops - AI-Powered Business Management for Halal Food Trucks. A mobile-first, bilingual inventory and financial management app designed specifically for halal food truck operators, featuring Middle Eastern street food inventory management, cash flow tracking, and business analytics.",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -43,7 +43,7 @@ export const translations = {
     
     // Cash Flow Radar
     cashFlowRadar: 'Cash Flow Radar',
-    cashFlowDescription: 'Monitor your business financial performance with detailed income and expense tracking.',
+    cashFlowDescription: 'Monitor your halal food truck financial performance with detailed income and expense tracking.',
     totalIncome: 'Total Income',
     totalExpenses: 'Total Expenses',
     netProfit: 'Net Profit',
@@ -87,10 +87,16 @@ export const translations = {
     success: 'Success',
     
     // Categories
-    tools: 'Tools',
-    supplies: 'Supplies',
-    food: 'Food',
-    materials: 'Materials',
+    entree: 'Entree',
+    vegetarian: 'Vegetarian',
+    condiments: 'Condiments',
+    sides: 'Sides',
+    beverage: 'Beverage',
+    protein: 'Protein',
+    grains: 'Grains',
+    bread: 'Bread',
+    sauces: 'Sauces',
+    seasonings: 'Seasonings',
     
     // Status
     excellent: 'Excellent',
@@ -145,7 +151,7 @@ export const translations = {
     
     // Cash Flow Radar
     cashFlowRadar: 'Radar de Flujo de Caja',
-    cashFlowDescription: 'Monitorea el rendimiento financiero de tu negocio con seguimiento detallado de ingresos y gastos.',
+    cashFlowDescription: 'Monitorea el rendimiento financiero de tu food truck halal con seguimiento detallado de ingresos y gastos.',
     totalIncome: 'Ingresos Totales',
     totalExpenses: 'Gastos Totales',
     netProfit: 'Ganancia Neta',
@@ -189,10 +195,16 @@ export const translations = {
     success: 'Éxito',
     
     // Categories
-    tools: 'Herramientas',
-    supplies: 'Suministros',
-    food: 'Comida',
-    materials: 'Materiales',
+    entree: 'Plato Principal',
+    vegetarian: 'Vegetariano',
+    condiments: 'Condimentos',
+    sides: 'Acompañamientos',
+    beverage: 'Bebida',
+    protein: 'Proteína',
+    grains: 'Granos',
+    bread: 'Pan',
+    sauces: 'Salsas',
+    seasonings: 'Condimentos',
     
     // Status
     excellent: 'Excelente',

@@ -1,15 +1,15 @@
-# Small Biz Ops - AI-Powered Business Management
+# Small Biz Ops - AI-Powered Halal Food Truck Management
 
-A modern, bilingual business management application built with Vite + React + Tailwind CSS for small entrepreneurs.
+A modern, bilingual business management application built with Vite + React + Tailwind CSS for halal food truck operators.
 
 ## 🚀 Features
 
 - **Bilingual Support**: Full English/Spanish localization
-- **Inventory Management**: Track finished goods and raw materials
-- **Financial Tracking**: Monitor cash flow, expenses, and profitability
-- **AI Business Manager**: Get intelligent business recommendations
-- **Mobile-First Design**: Responsive design optimized for all devices
-- **Offline Support**: Local storage for data persistence
+- **Food Inventory Management**: Track halal ingredients, prepared meals, and supplies
+- **Financial Tracking**: Monitor food truck cash flow, expenses, and profitability
+- **AI Business Manager**: Get intelligent recommendations for menu optimization
+- **Mobile-First Design**: Perfect for on-the-go food truck operations
+- **Offline Support**: Local storage for data persistence during events
 - **Modern UI**: Clean, accessible interface with Tailwind CSS
 
 ## 🛠️ Tech Stack
@@ -73,4 +73,4 @@ src/
 └── index.css          # Global styles
 ```
 
-Built with ❤️ for small business entrepreneurs worldwide.
+Built with ❤️ for halal food truck entrepreneurs worldwide.
