@@ -6,6 +6,7 @@ import { InventoryPage } from '@/components/InventoryPage'
 import { FinancePage } from '@/components/FinancePage'
 import { SettingsPage } from '@/components/SettingsPage'
 import { AIBusinessManager } from '@/components/AIBusinessManager'
+import CashFlowPage from '@/components/pages/CashFlowPage'
 import { mockInventory, mockRawMaterials, mockTransactions } from '@/data/mockData'
 
 function App() {
@@ -50,6 +51,8 @@ function App() {
             setTransactions={setTransactions}
           />
         )
+      case 'cashflow':
+        return <CashFlowPage />
       case 'settings':
         return <SettingsPage />
       default:

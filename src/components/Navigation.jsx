@@ -1,5 +1,5 @@
 import React from 'react'
-import { Home, Package, DollarSign, Settings, Globe } from 'lucide-react'
+import { Home, Package, DollarSign, Settings, Globe, TrendingUp } from 'lucide-react'
 import { useLanguage } from '@/contexts/LanguageContext'
 import { useTranslation } from '@/lib/translations'
 import { Button } from '@/components/ui/Button'
@@ -13,6 +13,7 @@ export const Navigation = ({ currentView, setCurrentView }) => {
     { id: 'home', label: t.home, icon: Home },
     { id: 'inventory', label: t.inventory, icon: Package },
     { id: 'finance', label: t.finance, icon: DollarSign },
+    { id: 'cashflow', label: t.cashFlow || 'Cash Flow', icon: TrendingUp },
     { id: 'settings', label: t.settings, icon: Settings },
   ]
 

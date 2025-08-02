@@ -41,6 +41,20 @@ export const translations = {
     description: 'Description',
     date: 'Date',
     
+    // Cash Flow Radar
+    cashFlowRadar: 'Cash Flow Radar',
+    cashFlowDescription: 'Monitor your business financial performance with detailed income and expense tracking.',
+    totalIncome: 'Total Income',
+    totalExpenses: 'Total Expenses',
+    netProfit: 'Net Profit',
+    profitMargin: 'Profit Margin',
+    noDataAvailable: 'No Data Available',
+    loadingCashFlow: 'Loading cash flow data...',
+    exportData: 'Export Data',
+    daily: 'Daily',
+    weekly: 'Weekly',
+    monthly: 'Monthly',
+    
     // AI Manager
     aiManager: 'AI Business Manager',
     aiSubtitle: '30+ Years SMB Experience',
@@ -128,6 +142,20 @@ export const translations = {
     amount: 'Cantidad',
     description: 'Descripción',
     date: 'Fecha',
+    
+    // Cash Flow Radar
+    cashFlowRadar: 'Radar de Flujo de Caja',
+    cashFlowDescription: 'Monitorea el rendimiento financiero de tu negocio con seguimiento detallado de ingresos y gastos.',
+    totalIncome: 'Ingresos Totales',
+    totalExpenses: 'Gastos Totales',
+    netProfit: 'Ganancia Neta',
+    profitMargin: 'Margen de Ganancia',
+    noDataAvailable: 'No Hay Datos Disponibles',
+    loadingCashFlow: 'Cargando datos de flujo de caja...',
+    exportData: 'Exportar Datos',
+    daily: 'Diario',
+    weekly: 'Semanal',
+    monthly: 'Mensual',
     
     // AI Manager
     aiManager: 'Gerente de Negocios IA',

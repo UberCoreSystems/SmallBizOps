@@ -88,6 +88,7 @@ export const mockTransactions = [
     type: 'sale', 
     amount: 156.75, 
     date: '2024-01-15', 
+    timestamp: new Date('2024-01-15T10:30:00'),
     description: 'Tool sale', 
     description_es: 'Venta de herramientas' 
   },
@@ -96,6 +97,7 @@ export const mockTransactions = [
     type: 'expense', 
     amount: 45.20, 
     date: '2024-01-14', 
+    timestamp: new Date('2024-01-14T14:20:00'),
     description: 'Supply purchase', 
     description_es: 'Compra de suministros' 
   },
@@ -104,7 +106,54 @@ export const mockTransactions = [
     type: 'sale', 
     amount: 89.50, 
     date: '2024-01-13', 
+    timestamp: new Date('2024-01-13T16:45:00'),
     description: 'Service payment', 
     description_es: 'Pago de servicio' 
+  },
+  // Recent transactions for Cash Flow Radar testing
+  { 
+    id: 4, 
+    type: 'sale', 
+    amount: 245.00, 
+    date: new Date().toISOString().split('T')[0], 
+    timestamp: new Date(),
+    description: 'Coffee beans sale', 
+    description_es: 'Venta de granos de café' 
+  },
+  { 
+    id: 5, 
+    type: 'expense', 
+    amount: 85.30, 
+    date: new Date(Date.now() - 86400000).toISOString().split('T')[0], 
+    timestamp: new Date(Date.now() - 86400000),
+    description: 'Rent payment', 
+    description_es: 'Pago de alquiler' 
+  },
+  { 
+    id: 6, 
+    type: 'sale', 
+    amount: 320.50, 
+    date: new Date(Date.now() - 172800000).toISOString().split('T')[0], 
+    timestamp: new Date(Date.now() - 172800000),
+    description: 'Hardware sale', 
+    description_es: 'Venta de herramientas' 
+  },
+  { 
+    id: 7, 
+    type: 'expense', 
+    amount: 125.75, 
+    date: new Date(Date.now() - 259200000).toISOString().split('T')[0], 
+    timestamp: new Date(Date.now() - 259200000),
+    description: 'Supplies restocking', 
+    description_es: 'Reabastecimiento de suministros' 
+  },
+  { 
+    id: 8, 
+    type: 'sale', 
+    amount: 180.25, 
+    date: new Date(Date.now() - 345600000).toISOString().split('T')[0], 
+    timestamp: new Date(Date.now() - 345600000),
+    description: 'Paint supplies sale', 
+    description_es: 'Venta de suministros de pintura' 
   }
 ]
